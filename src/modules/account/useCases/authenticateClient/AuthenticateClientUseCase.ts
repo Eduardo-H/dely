@@ -1,4 +1,4 @@
-import { prisma } from '../../../database/prismaClient';
+import { prisma } from '../../../../database/prismaClient';
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 
@@ -28,6 +28,8 @@ export class AuthenticateClientUseCase {
       expiresIn: '1d'
     });
 
-    return token;
+    return {
+      token
+    };
   }
 }
