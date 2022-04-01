@@ -1,12 +1,12 @@
 import { prisma } from '../../../../database/prismaClient';
 
-interface iUpdateDeliverymanUseCase {
+interface IUpdateDeliverymanUseCase {
   id_delivery: string;
   id_deliveryman: string;
 }
 
 export class UpdateDeliverymanUseCase {
-  async execute({ id_delivery, id_deliveryman }: iUpdateDeliverymanUseCase) {
+  async execute({ id_delivery, id_deliveryman }: IUpdateDeliverymanUseCase) {
     const result = await prisma.delivery.update({
       where: {
         id: id_delivery

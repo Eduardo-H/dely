@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 
-interface iPayload {
+interface IPayload {
   sub: string;
 }
 
@@ -21,7 +21,7 @@ export async function ensureAuthenticatedClient(
   const [, token] = authHeader.split(' ');
 
   try {
-    const { sub } = verify(token, 'a60e64df52acdef32af9cc2b7b47748c') as iPayload;
+    const { sub } = verify(token, 'a60e64df52acdef32af9cc2b7b47748c') as IPayload;
 
     request.id_client = sub;
 

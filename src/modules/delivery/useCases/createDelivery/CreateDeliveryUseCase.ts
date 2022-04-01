@@ -1,12 +1,12 @@
 import { prisma } from '../../../../database/prismaClient';
 
-interface iCreateDelivery {
+interface ICreateDelivery {
   item_name: string;
   id_client: string;
 }
 
 export class CreateDeliveryUseCase {
-  async execute({ item_name, id_client }: iCreateDelivery) {
+  async execute({ item_name, id_client }: ICreateDelivery) {
     const delivery = await prisma.delivery.create({
       data: {
         item_name,
