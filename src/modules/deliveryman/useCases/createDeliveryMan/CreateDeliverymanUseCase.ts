@@ -8,6 +8,9 @@ interface ICreateDeliveryman {
 
 export class CreateDeliverymanUseCase {
   async execute({ username, password }: ICreateDeliveryman) {
+    if (username.trim() === '' || password.trim() === '')
+      throw new Error('Username and password can not be blank.');
+
     const deliverymanAlreadyExists = await prisma.deliveryman.findFirst({
       where: {
         username: {
