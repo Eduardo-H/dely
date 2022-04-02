@@ -8,6 +8,9 @@ interface ICreateClient {
 
 export class CreateClientUseCase {
   async execute({ username, password }: ICreateClient) {
+    if (username.trim() === '' || password.trim() === '')
+      throw new Error('Username and password can not be blank.');
+
     const clientAlreadyExists = await prisma.client.findFirst({
       where: {
         username: {
