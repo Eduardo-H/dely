@@ -8,7 +8,7 @@ beforeAll(() => {
 });
 
 describe('Create client use case', () => {
-  it('should be able to create a new user', async () => {
+  it('should be able to create a new client', async () => {
     const client = {
       id: '17a75e7a-34bd-44cc-b613-bcfbaa7f89d8',
       username: 'john_doe',
