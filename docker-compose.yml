@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  database:
+    image: bitnami/postgresql
+    container_name: dely_database
+    restart: always
+    ports:
+      - ${DB_PORT}:5432
+    environment:
+      - POSTGRESQL_USERNAME=${DB_USER}
+      - POSTGRESQL_PASSWORD=${DB_PASSWORD}
+      - POSTGRESQL_DATABASE=${DB_NAME}
+    volumes:
+      - pgdata:/data/postgres
+
+  test_database:
+    image: bitnami/postgresql
+    container_name: dely_test_database
+    restart: always
+    ports:
+      - ${DB_TEST_PORT}:5432
+    environment:
+      - POSTGRESQL_USERNAME=${DB_USER}
+      - POSTGRESQL_PASSWORD=${DB_PASSWORD}
+      - POSTGRESQL_DATABASE=${DB_TEST_NAME}
+    volumes:
+      - pgdata:/data/postgres
+
+volumes:
+  pgdata:
+    driver: local

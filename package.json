@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts",
-    "test": "jest -i"
+    "test": "dotenv -e .env.test yarn migrate:test && jest -",
+    "migrate:dev": "dotenv -e .env.development prisma migrate dev",
+    "migrate:test": "dotenv -e .env.test prisma migrate deploy"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -22,6 +24,7 @@
   "dependencies": {
     "@prisma/client": "^3.11.1",
     "bcrypt": "^5.0.1",
+    "dotenv-cli": "^6.0.0",
     "express": "^4.17.3",
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1"
